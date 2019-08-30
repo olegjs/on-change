@@ -3,8 +3,12 @@
 const { yellow, magenta } = require('chalk')
 const { spawnSync } = require('child_process')
 const { existsSync, readFileSync, writeFileSync } = require('fs')
-const { basename, dirname, join } = require('path')
-const { checksum, hashFromFileContent } = require('./checksum')
+
+const {
+  checksum,
+  checksumFilePath: getChecksumFilePath,
+  hashFromFileContent,
+} = require('./checksum')
 
 const argv = require('yargs')
   .scriptName('on-file-change')
@@ -27,8 +31,8 @@ const getPastCheckSum = path =>
   existsSync(path) ? hashFromFileContent(readFileSync(path, UTF)) : null
 
 const checkSum = checksum(readFileSync(argv.file, UTF))
-const checkSumFileName = `.${basename(argv.file)}.sha`
-const pastCheckSum = getPastCheckSum(join(dirname(argv.file), checkSumFileName))
+const checksumFilePath = getChecksumFilePath(argv.file)
+const pastCheckSum = getPastCheckSum(checksumFilePath)
 
 if (checkSum !== pastCheckSum) {
   console.log(
@@ -38,5 +42,5 @@ if (checkSum !== pastCheckSum) {
 
   const [command, ...args] = argv._
   spawnSync(command, args, { encoding: UTF, stdio: 'inherit' })
-  writeFileSync(checkSumFileName, `${checkSum}  ${argv.file}`)
+  writeFileSync(checksumFilePath, `${checkSum}  ${argv.file}`)
 }
