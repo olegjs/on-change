@@ -38,16 +38,14 @@ const getPastCheckSum = path =>
 const checkSum = getCheckSum(readFileSync(argv.file, UTF))
 const checkSumFileName = `.${basename(argv.file)}.sha`
 const pastCheckSum = getPastCheckSum(join(dirname(argv.file), checkSumFileName))
-const isSumChecksOut = checkSum === pastCheckSum
 
-if (!isSumChecksOut) {
+if (checkSum !== pastCheckSum) {
   console.log(
     `File "${magenta(argv.file)}" has changed.`,
     `Running "${yellow(argv._.join(' '))}"...`,
   )
 
   const [command, ...args] = argv._
-
   spawnSync(command, args, { encoding: UTF, stdio: 'inherit' })
   writeFileSync(checkSumFileName, `${checkSum}  ${argv.file}`)
 }
