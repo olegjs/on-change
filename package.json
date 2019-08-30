@@ -12,7 +12,7 @@
   "author": "Oleg",
   "main": "index.js",
   "bin": {
-    "on-change": "./"
+    "on-change": "./index.js"
   },
   "prettier": {
     "semi": false,
