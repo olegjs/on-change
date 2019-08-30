@@ -2,9 +2,9 @@
 
 const { yellow, magenta } = require('chalk')
 const { spawnSync } = require('child_process')
-const { createHash } = require('crypto')
 const { existsSync, readFileSync, writeFileSync } = require('fs')
 const { basename, dirname, join } = require('path')
+const { checksum, hashFromFileContent } = require('./checksum')
 
 const argv = require('yargs')
   .scriptName('on-file-change')
@@ -23,19 +23,10 @@ const argv = require('yargs')
 
 const UTF = 'utf8'
 
-const getCheckSum = (s, algorithm = 'sha1', format = 'hex') =>
-  createHash(algorithm)
-    .update(s)
-    .digest(format)
-
 const getPastCheckSum = path =>
-  existsSync(path)
-    ? readFileSync(path, UTF)
-        .trim()
-        .split(/\s+/)[0]
-    : null
+  existsSync(path) ? hashFromFileContent(readFileSync(path, UTF)) : null
 
-const checkSum = getCheckSum(readFileSync(argv.file, UTF))
+const checkSum = checksum(readFileSync(argv.file, UTF))
 const checkSumFileName = `.${basename(argv.file)}.sha`
 const pastCheckSum = getPastCheckSum(join(dirname(argv.file), checkSumFileName))
 

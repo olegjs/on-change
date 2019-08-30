@@ -11,9 +11,12 @@
   "repository": "github:olegjs/on-change",
   "license": "MIT",
   "author": "Oleg",
-  "main": "index.js",
+  "main": "on-change.js",
   "bin": {
-    "on-change": "./index.js"
+    "on-change": "./on-change.js"
+  },
+  "scripts": {
+    "test": "node on-change.test.js"
   },
   "prettier": {
     "semi": false,
