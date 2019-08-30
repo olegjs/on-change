@@ -1,0 +1,26 @@
+{
+  "name": "@olegjs/on-change",
+  "version": "1.0.0",
+  "description": "Run a command when a file changes since last time the command was executed",
+  "keywords": [
+    "change",
+    "file",
+    "sha",
+    "checksum"
+  ],
+  "license": "MIT",
+  "author": "Oleg",
+  "main": "index.js",
+  "bin": {
+    "on-change": "./"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "yargs": "^13.3.0"
+  }
+}
