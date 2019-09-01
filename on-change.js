@@ -5,7 +5,7 @@ const { spawnSync } = require('child_process')
 const { existsSync, readFileSync, writeFileSync } = require('fs')
 
 const {
-  checksum,
+  checksum: getChecksum,
   checksumFilePath: getChecksumFilePath,
   hashFromFileContent,
 } = require('./checksum')
@@ -27,14 +27,14 @@ const argv = require('yargs')
 
 const UTF = 'utf8'
 
-const getPastCheckSum = path =>
+const getPastChecksum = path =>
   existsSync(path) ? hashFromFileContent(readFileSync(path, UTF)) : null
 
-const checkSum = checksum(readFileSync(argv.file, UTF))
+const checksum = getChecksum(readFileSync(argv.file, UTF))
 const checksumFilePath = getChecksumFilePath(argv.file)
-const pastCheckSum = getPastCheckSum(checksumFilePath)
+const pastChecksum = getPastChecksum(checksumFilePath)
 
-if (checkSum !== pastCheckSum) {
+if (checksum !== pastChecksum) {
   console.log(
     `File "${magenta(argv.file)}" has changed.`,
     `Running "${yellow(argv._.join(' '))}"...`,
@@ -42,5 +42,5 @@ if (checkSum !== pastCheckSum) {
 
   const [command, ...args] = argv._
   spawnSync(command, args, { encoding: UTF, stdio: 'inherit' })
-  writeFileSync(checksumFilePath, `${checkSum}  ${argv.file}`)
+  writeFileSync(checksumFilePath, `${checksum}  ${argv.file}`)
 }
