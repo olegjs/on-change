@@ -3,13 +3,20 @@
   "version": "1.0.2",
   "description": "Run a command when a file changes since last time the command was executed",
   "keywords": [
+    "CLI",
+    "automate",
     "change",
     "checksum",
+    "command",
+    "dev",
+    "development",
     "file",
-    "sha"
+    "script",
+    "sha",
+    "tool"
   ],
   "repository": "github:olegjs/on-change",
-  "license": "MIT",
+  "license": "ICS",
   "author": "Oleg",
   "main": "on-change.js",
   "bin": {
