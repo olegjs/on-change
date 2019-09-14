@@ -16,7 +16,7 @@
     "tool"
   ],
   "repository": "github:olegjs/on-change",
-  "license": "ICS",
+  "license": "ISC",
   "author": "Oleg",
   "main": "on-change.js",
   "bin": {
