@@ -33,7 +33,7 @@ npm install --save-dev @olegjs/on-change
 ## Usage
 
 ```sh
-npx on-change --help
+npx @olegjs/on-change --help
 # Usage: on-file-change --file [file] [command]
 #
 # Options:
