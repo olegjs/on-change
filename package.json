@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "yargs": "^13.3.0"
+    "yargs": "^14.0.0"
   }
 }
