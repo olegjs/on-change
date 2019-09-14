@@ -1,5 +1,10 @@
 # on-change
 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/olegjs/on-change)
+![David](https://img.shields.io/david/olegjs/on-change)
+![GitHub last commit](https://img.shields.io/github/last-commit/olegjs/on-change)
+![NPM](https://img.shields.io/npm/l/@olegjs/on-change)
+
 CLI tool to run a command if file has changed since the last time that command
 was run.
 
