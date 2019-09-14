@@ -1,6 +1,6 @@
 {
   "name": "@olegjs/on-change",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Run a command when a file changes since last time the command was executed",
   "keywords": [
     "CLI",
