@@ -21,18 +21,17 @@
   "license": "ISC",
   "author": "Oleg",
   "files": [
-    "checksum.js",
-    "on-change.js"
+    "src/"
   ],
-  "main": "on-change.js",
+  "main": "./src/on-change.js",
   "bin": {
-    "on-change": "./on-change.js"
+    "on-change": "./src/on-change.js"
   },
   "scripts": {
     "coverage": "nyc --check-coverage npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "prepublishOnly": "npm run coverage",
-    "test": "node checksum.test.js"
+    "test": "node ./src/checksum.test.js"
   },
   "prettier": {
     "proseWrap": "always",
