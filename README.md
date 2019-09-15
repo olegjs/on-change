@@ -1,12 +1,10 @@
 # on-change
 
-![Travis (.org)](https://img.shields.io/travis/olegjs/on-change)
+[![Build Status](https://travis-ci.org/olegjs/on-change.svg?branch=master)](https://travis-ci.org/olegjs/on-change)
 [![Coverage Status](https://coveralls.io/repos/github/olegjs/on-change/badge.svg?branch=master)](https://coveralls.io/github/olegjs/on-change?branch=master)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/olegjs/on-change)
-[![install size](https://packagephobia.now.sh/badge?p=@olegjs/on-change)](https://packagephobia.now.sh/result?p=@olegjs/on-change)
-![David](https://img.shields.io/david/olegjs/on-change)
+[![dependencies Status](https://david-dm.org/olegjs/on-change/status.svg)](https://david-dm.org/olegjs/on-change)
+[![devDependencies Status](https://david-dm.org/olegjs/on-change/dev-status.svg)](https://david-dm.org/olegjs/on-change?type=dev)
 ![GitHub last commit](https://img.shields.io/github/last-commit/olegjs/on-change)
-![NPM](https://img.shields.io/npm/l/@olegjs/on-change)
 
 CLI tool to run a command if file has changed since the last time that command
 was run.
