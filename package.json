@@ -17,7 +17,7 @@
     "sha",
     "tool"
   ],
-  "repository": "github:olegjs/on-change",
+  "repository": "https://github.com/olegjs/on-change",
   "license": "ISC",
   "author": "Oleg",
   "files": [
