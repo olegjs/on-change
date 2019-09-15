@@ -1,3 +1,4 @@
 .*.sha
-coverage
+.coveralls.yml
 .nyc_output
+coverage
