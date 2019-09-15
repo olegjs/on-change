@@ -1,5 +1,6 @@
 # on-change
 
+![Travis (.org)](https://img.shields.io/travis/olegjs/on-change)
 [![Coverage Status](https://coveralls.io/repos/github/olegjs/on-change/badge.svg?branch=master)](https://coveralls.io/github/olegjs/on-change?branch=master)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/olegjs/on-change)
 [![install size](https://packagephobia.now.sh/badge?p=@olegjs/on-change)](https://packagephobia.now.sh/result?p=@olegjs/on-change)
