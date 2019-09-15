@@ -30,7 +30,8 @@
   "scripts": {
     "coverage": "nyc --check-coverage npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "prepublishOnly": "npm run coverage",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run lint && npm run coverage",
     "test": "node ./src/checksum.test.js"
   },
   "prettier": {
@@ -39,12 +40,26 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ]
+  },
   "dependencies": {
     "chalk": "^2.4.2",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.6",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
     "nyc": "^14.1.1"
   },
   "nyc": {

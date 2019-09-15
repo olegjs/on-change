@@ -1,4 +1,4 @@
-const { basename, dirname, join, format, extname } = require('path')
+const { basename, dirname, join, format } = require('path')
 const { createHash } = require('crypto')
 
 const SHA1 = 'sha1'
