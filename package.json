@@ -1,9 +1,10 @@
 {
   "name": "@olegjs/on-change",
   "version": "1.0.8",
-  "description": "Run a command when a file changes since last time the command was executed",
+  "description": "CLI tool to run a command if file has changed since the last time that command was run",
   "keywords": [
     "CLI",
+    "auto",
     "automate",
     "change",
     "checksum",
@@ -11,6 +12,7 @@
     "dev",
     "development",
     "file",
+    "package-lock",
     "script",
     "sha",
     "tool"
@@ -23,7 +25,14 @@
     "on-change": "./on-change.js"
   },
   "scripts": {
-    "test": "node on-change.test.js"
+    "coverage": "npx nyc --check-coverage npm test",
+    "test": "node checksum.test.js"
+  },
+  "nyc": {
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
   },
   "prettier": {
     "proseWrap": "always",
