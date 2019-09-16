@@ -11,7 +11,7 @@ const {
 } = require('./checksum')
 
 const argv = require('yargs')
-  .scriptName('on-file-change')
+  .scriptName('on-change')
   .usage('Usage: $0 --file [file] [command]')
   .example(
     '$0 --file package-lock.json npm ci',
