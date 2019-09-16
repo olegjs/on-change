@@ -21,7 +21,7 @@
   "license": "ISC",
   "author": "Oleg",
   "files": [
-    "src/"
+    "./src/"
   ],
   "main": "./src/on-change.js",
   "bin": {
@@ -30,7 +30,7 @@
   "scripts": {
     "coverage": "nyc --check-coverage npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint src/",
+    "lint": "eslint ./src/",
     "prepublishOnly": "npm run lint && npm run coverage",
     "test": "node ./src/checksum.test.js"
   },
