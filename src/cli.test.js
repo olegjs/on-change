@@ -23,14 +23,15 @@ module.exports = () => {
   })
 
   const checksumFilePath = getChecksumFilePath(scriptPath)
+  const payload = 'echo'
 
   unlink(checksumFilePath, () => {
-    exec(`${command} --file ${scriptPath} echo`, (error, stdout) => {
+    exec(`${command} --file ${scriptPath} ${payload}`, (error, stdout) => {
       assert(!error)
-      assert(stdout.includes('echo'))
+      assert(stdout.includes(payload))
       assert(stdout.includes(scriptPath))
 
-      exec(`${command} -f ${scriptPath} echo`, (error, stdout) => {
+      exec(`${command} -f ${scriptPath} ${payload}`, (error, stdout) => {
         assert(!error)
         assert(stdout === '')
         unlink(checksumFilePath, error => assert(!error))
