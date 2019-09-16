@@ -23,16 +23,16 @@
   "files": [
     "./src/"
   ],
-  "main": "./src/on-change.js",
+  "main": "./src/cli.js",
   "bin": {
-    "on-change": "./src/on-change.js"
+    "on-change": "./src/cli.js"
   },
   "scripts": {
-    "coverage": "nyc --check-coverage npm test",
+    "coverage": "nyc npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/",
     "prepublishOnly": "npm run lint && npm run coverage",
-    "test": "node ./src/checksum.test.js"
+    "test": "node test.js"
   },
   "prettier": {
     "proseWrap": "always",
@@ -63,6 +63,10 @@
     "nyc": "^14.1.1"
   },
   "nyc": {
+    "check-coverage": true,
+    "reporter": [
+      "lcov"
+    ],
     "branches": 100,
     "lines": 100,
     "functions": 100,

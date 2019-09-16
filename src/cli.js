@@ -5,8 +5,8 @@ const { spawnSync } = require('child_process')
 const { existsSync, readFileSync, writeFileSync } = require('fs')
 
 const {
-  checksum: getChecksum,
-  checksumFilePath: getChecksumFilePath,
+  getChecksum,
+  getChecksumFilePath,
   hashFromFileContent,
 } = require('./checksum')
 
