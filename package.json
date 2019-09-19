@@ -12,7 +12,10 @@
     "dev",
     "development",
     "file",
+    "install",
+    "modules",
     "package-lock",
+    "packages",
     "script",
     "sha",
     "tool"
