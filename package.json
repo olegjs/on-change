@@ -25,7 +25,8 @@
   "license": "ISC",
   "author": "Oleg",
   "files": [
-    "src/"
+    "!src/*.test.js",
+    "src/*.js"
   ],
   "main": "./src/cli.js",
   "bin": {
