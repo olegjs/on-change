@@ -10,14 +10,14 @@
 CLI tool to run a command if file has changed since the last time that command
 was run.
 
-Forgetting to run `npm i` every time after `git pull` and getting
+Forgetting to run `npm i` or `npm ci` every time after `git pull` and getting
 `Error: Cannot find module...`? Add the following to `package.json` to automate
 this chore.
 
 ```json
 {
   "scripts": {
-    "prestart": "on-change --file package-lock.json npm ci"
+    "prestart": "npx @olegjs/on-change --file package-lock.json npm ci"
   }
 }
 ```
