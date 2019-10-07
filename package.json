@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.6",
