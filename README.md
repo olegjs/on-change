@@ -1,6 +1,6 @@
 # on-change
 
-![npm](https://img.shields.io/npm/dw/@olegjs/on-change)
+[![npm](https://img.shields.io/npm/dw/@olegjs/on-change)](https://www.npmjs.com/package/@olegjs/on-change)
 [![install size](https://packagephobia.now.sh/badge?p=@olegjs/on-change)](https://packagephobia.now.sh/result?p=@olegjs/on-change)
 [![Build Status](https://travis-ci.org/olegjs/on-change.svg?branch=master)](https://travis-ci.org/olegjs/on-change)
 [![Coverage Status](https://coveralls.io/repos/github/olegjs/on-change/badge.svg?branch=master)](https://coveralls.io/github/olegjs/on-change?branch=master)
@@ -37,14 +37,17 @@ npm install --save-dev @olegjs/on-change
 
 ```sh
 npx @olegjs/on-change --help
-# Usage: on-file-change --file [file] [command]
+
+# Usage: on-change --file [file] [command]
 #
 # Options:
 #   --help      Show help                                                [boolean]
 #   --version   Show version number                                      [boolean]
 #   --file, -f  Path to file to check for changes              [string] [required]
+#   --color     Force color, default auto               [boolean] [default: false]
+#   --no-color  Disable color output                    [boolean] [default: false]
 #
 # Examples:
-#   on-file-change --file package-lock.json   Reinstall dependencies on changed
-#   npm ci                                    package-lock.json
+#   on-change --file package-lock.json npm    Reinstall dependencies on changed
+#   ci                                        package-lock.json
 ```

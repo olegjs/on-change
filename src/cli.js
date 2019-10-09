@@ -23,6 +23,16 @@ const argv = require('yargs')
     describe: 'Path to file to check for changes',
     type: 'string',
   })
+  .option('color', {
+    default: false,
+    describe: 'Force color, default auto',
+    type: 'boolean',
+  })
+  .option('no-color', {
+    default: false,
+    describe: 'Disable color output',
+    type: 'boolean',
+  })
   .demandCommand(1).argv
 
 const UTF = 'utf8'

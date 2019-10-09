@@ -28,8 +28,8 @@
   "license": "ISC",
   "author": "Oleg",
   "files": [
-    "!src/*.test.js",
-    "src/*.js"
+    "src/*.js",
+    "!src/*.test.js"
   ],
   "main": "./src/cli.js",
   "bin": {
@@ -40,7 +40,8 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/",
     "prepublishOnly": "npm run lint && npm run coverage",
-    "test": "node test.js"
+    "test": "node test.js",
+    "start": "node src/cli.js"
   },
   "prettier": {
     "proseWrap": "always",
