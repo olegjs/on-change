@@ -24,13 +24,7 @@ const argv = require('yargs')
     type: 'string',
   })
   .option('color', {
-    default: false,
-    describe: 'Force color, default auto',
-    type: 'boolean',
-  })
-  .option('no-color', {
-    default: false,
-    describe: 'Disable color output',
+    describe: 'Force color or disable with --no-color',
     type: 'boolean',
   })
   .demandCommand(1).argv
