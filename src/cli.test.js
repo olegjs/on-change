@@ -1,5 +1,5 @@
 const { exec } = require('child_process')
-const assert = require('assert')
+const { ok, ifError, strictEqual: equal } = require('assert')
 const { join } = require('path')
 const { unlink } = require('fs')
 const { getChecksumFilePath } = require('./checksum')
@@ -20,16 +20,16 @@ module.exports = () => {
   ]
 
   exec(`${command} --help`, (error, stdout) => {
-    assert(!error)
+    ifError(error)
 
     options.forEach(option =>
-      assert(stdout.includes(option), `Expect "${option}" in help`),
+      ok(stdout.includes(option), `Expect "${option}" in help`),
     )
   })
 
   exec(`${command} --version`, (error, stdout) => {
-    assert(!error)
-    assert(stdout.trim() === version)
+    ifError(error)
+    equal(stdout.trim(), version)
   })
 
   const checksumFilePath = getChecksumFilePath(scriptPath)
@@ -37,26 +37,26 @@ module.exports = () => {
 
   unlink(checksumFilePath, () => {
     exec(`${command} --file ${scriptPath} ${payload}`, (error, stdout) => {
-      assert(!error)
-      assert(stdout.includes(payload))
-      assert(stdout.includes(scriptPath))
+      ifError(error)
+      ok(stdout.includes(payload))
+      ok(stdout.includes(scriptPath))
 
       // Checksum match -- no action
       exec(`${command} -f ${scriptPath} ${payload}`, (error, stdout) => {
-        assert(!error)
-        assert(stdout === '')
+        ifError(error)
+        equal(stdout, '')
 
         unlink(checksumFilePath, error => {
-          assert(!error)
+          ifError(error)
 
           // Colors
           exec(
             `${command} --color --file ${scriptPath} ${payload}`,
             (error, stdout) => {
-              assert(!error)
-              assert(stdout.includes(magenta(scriptPath)))
-              assert(stdout.includes(yellow(payload)))
-              unlink(checksumFilePath, error => assert(!error))
+              ifError(error)
+              ok(stdout.includes(magenta(scriptPath)))
+              ok(stdout.includes(yellow(payload)))
+              unlink(checksumFilePath, error => ifError(error))
             },
           )
         })
