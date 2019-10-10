@@ -44,8 +44,7 @@ npx @olegjs/on-change --help
 #   --help      Show help                                                [boolean]
 #   --version   Show version number                                      [boolean]
 #   --file, -f  Path to file to check for changes              [string] [required]
-#   --color     Force color, default auto               [boolean] [default: false]
-#   --no-color  Disable color output                    [boolean] [default: false]
+#   --color     Force color or disable with --no-color                   [boolean]
 #
 # Examples:
 #   on-change --file package-lock.json npm    Reinstall dependencies on changed
