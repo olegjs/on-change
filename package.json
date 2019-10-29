@@ -66,9 +66,9 @@
     "yargs": "^14.2.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.6",
-    "eslint": "^6.5.1",
-    "eslint-config-prettier": "^6.4.0",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
     "nyc": "^14.1.1"
   },
   "nyc": {
