@@ -3,6 +3,7 @@
 const { yellow, magenta } = require('chalk')
 const { spawnSync } = require('child_process')
 const { existsSync, readFileSync, writeFileSync } = require('fs')
+const { encoding } = require('./defaults')
 
 const {
   getChecksum,
@@ -29,12 +30,10 @@ const argv = require('yargs')
   })
   .demandCommand(1).argv
 
-const UTF = 'utf8'
-
 const getPastChecksum = path =>
-  existsSync(path) ? hashFromFileContent(readFileSync(path, UTF)) : null
+  existsSync(path) ? hashFromFileContent(readFileSync(path, encoding)) : null
 
-const checksum = getChecksum(readFileSync(argv.file, UTF))
+const checksum = getChecksum(readFileSync(argv.file, encoding))
 const checksumFilePath = getChecksumFilePath(argv.file)
 const pastChecksum = getPastChecksum(checksumFilePath)
 
@@ -45,6 +44,6 @@ if (checksum !== pastChecksum) {
   )
 
   const [command, ...args] = argv._
-  spawnSync(command, args, { encoding: UTF, stdio: 'inherit' })
+  spawnSync(command, args, { encoding, stdio: 'inherit' })
   writeFileSync(checksumFilePath, `${checksum}  ${argv.file}`)
 }

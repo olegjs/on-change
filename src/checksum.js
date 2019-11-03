@@ -1,10 +1,14 @@
-const { basename, dirname, join, format } = require('path')
+const {
+  basename,
+  dirname,
+  format: formatPath,
+  join: joinPath,
+} = require('path')
+
 const { createHash } = require('crypto')
+const { algorithm: default_algorithm, fileExtension } = require('./defaults')
 
-const SHA1 = 'sha1'
-const DEFAULT_ALGORITHM = SHA1
-
-const getChecksum = (s, algorithm = DEFAULT_ALGORITHM, format = 'hex') =>
+const getChecksum = (s, algorithm = default_algorithm, format = 'hex') =>
   createHash(algorithm)
     .update(s)
     .digest(format)
@@ -12,18 +16,9 @@ const getChecksum = (s, algorithm = DEFAULT_ALGORITHM, format = 'hex') =>
 const hashFromFileContent = s => s.trim().split(/\s+/)[0]
 
 const getChecksumFilePath = path =>
-  join(
+  joinPath(
     dirname(path),
-    format({
-      name: `.${basename(path)}`,
-      ext: '.sha',
-    }),
+    formatPath({ name: `.${basename(path)}`, ext: fileExtension }),
   )
 
-module.exports = {
-  DEFAULT_ALGORITHM,
-  SHA1,
-  getChecksum,
-  getChecksumFilePath,
-  hashFromFileContent,
-}
+module.exports = { getChecksum, getChecksumFilePath, hashFromFileContent }

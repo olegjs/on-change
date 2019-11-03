@@ -5,8 +5,9 @@ const { existsSync, unlinkSync } = require('fs')
 const { getChecksumFilePath } = require('./checksum')
 const package = require('../package.json')
 const { magenta, yellow } = require('chalk')
+const { encoding } = require('./defaults')
 
-const run = cmd => execSync(cmd, { encoding: 'utf-8' })
+const run = cmd => execSync(cmd, { encoding })
 
 module.exports = () => {
   const scriptPath = path.join(__dirname, 'cli.js')
