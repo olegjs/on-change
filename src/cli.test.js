@@ -1,7 +1,9 @@
-const { exec } = require('child_process')
+const { promisify } = require('util')
+const exec = promisify(require('child_process').exec)
 const { ok, ifError, strictEqual: equal } = require('assert')
 const { join } = require('path')
-const { unlink } = require('fs')
+const { existsSync, unlinkSync } = require('fs')
+const unlink = promisify(require('fs').unlink)
 const { getChecksumFilePath } = require('./checksum')
 const { version } = require('../package.json')
 const { magenta, yellow } = require('chalk')
@@ -19,48 +21,38 @@ module.exports = () => {
     '--help',
   ]
 
-  exec(`${command} --help`, (error, stdout) => {
-    ifError(error)
+  exec(`${command} --help`)
+    .then(({ stdout }) => {
+      options.forEach(option =>
+        ok(stdout.includes(option), `Expect "${option}" in help`),
+      )
+    })
+    .catch(ifError)
 
-    options.forEach(option =>
-      ok(stdout.includes(option), `Expect "${option}" in help`),
-    )
-  })
-
-  exec(`${command} --version`, (error, stdout) => {
-    ifError(error)
-    equal(stdout.trim(), version)
-  })
+  exec(`${command} --version`)
+    .then(({ stdout }) => equal(stdout.trim(), version))
+    .catch(ifError)
 
   const checksumFilePath = getChecksumFilePath(scriptPath)
   const payload = 'echo'
 
-  unlink(checksumFilePath, () => {
-    exec(`${command} --file ${scriptPath} ${payload}`, (error, stdout) => {
-      ifError(error)
+  if (existsSync(checksumFilePath)) unlinkSync(checksumFilePath)
+
+  exec(`${command} --file ${scriptPath} ${payload}`)
+    .then(({ stdout }) => {
       ok(stdout.includes(payload))
       ok(stdout.includes(scriptPath))
-
-      // Checksum match -- no action
-      exec(`${command} -f ${scriptPath} ${payload}`, (error, stdout) => {
-        ifError(error)
-        equal(stdout, '')
-
-        unlink(checksumFilePath, error => {
-          ifError(error)
-
-          // Colors
-          exec(
-            `${command} --color --file ${scriptPath} ${payload}`,
-            (error, stdout) => {
-              ifError(error)
-              ok(stdout.includes(magenta(scriptPath)))
-              ok(stdout.includes(yellow(payload)))
-              unlink(checksumFilePath, error => ifError(error))
-            },
-          )
-        })
-      })
+      return exec(`${command} -f ${scriptPath} ${payload}`)
     })
-  })
+    .then(({ stdout }) => {
+      equal(stdout, '')
+      return unlink(checksumFilePath)
+    })
+    .then(() => exec(`${command} --color --file ${scriptPath} ${payload}`))
+    .then(({ stdout }) => {
+      ok(stdout.includes(magenta(scriptPath)))
+      ok(stdout.includes(yellow(payload)))
+      return unlink(checksumFilePath)
+    })
+    .catch(ifError)
 }
