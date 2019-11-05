@@ -1,12 +1,8 @@
-const { readdir } = require('fs')
-const { join } = require('path')
+const { readdirSync } = require('fs')
+const path = require('path')
+const srcPath = path.join(__dirname, 'src/')
 
-const srcPath = join(__dirname, 'src/')
-
-readdir(srcPath, (error, files) => {
-  if (!error) {
-    files
-      .filter(file => file.endsWith('.test.js'))
-      .forEach(file => require(join(srcPath, file))())
-  }
-})
+// NOTE: not trying to catch; sufficient error handling as is
+readdirSync(srcPath).forEach(
+  file => file.endsWith('.test.js') && require(path.join(srcPath, file))(),
+)
