@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.5
+
+Hide david-dm badges
+
+## 1.1.4
+
+- Upgrade to yargs@15
+
 ## 1.1.3
 
 - Upgrade to chalk@3
