@@ -67,9 +67,9 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.9",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
-    "nyc": "^14.1.1"
+    "nyc": "^15.0.0"
   },
   "nyc": {
     "check-coverage": true,
