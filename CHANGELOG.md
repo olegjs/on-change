@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+Update yargs
+
 ## 1.1.5
 
 Hide david-dm badges
