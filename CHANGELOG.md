@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+Use "defaults" namespace -- readability
+
 ## 1.2.0
 
 Update yargs
