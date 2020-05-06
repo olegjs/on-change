@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+No longer support node@8 since chalk@4 upgrade
+
 ## 1.2.1
 
 Use "defaults" namespace -- readability
