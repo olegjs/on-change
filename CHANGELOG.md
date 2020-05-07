@@ -2,7 +2,8 @@
 
 ## 2.0.0
 
-No longer support node@8 since chalk@4 upgrade
+- Add node@14 support
+- Drop node@8 support since chalk@4 upgrade
 
 ## 1.2.1
 
