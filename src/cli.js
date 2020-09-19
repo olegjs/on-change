@@ -30,7 +30,7 @@ const argv = require('yargs')
   })
   .demandCommand(1).argv
 
-const getPastChecksum = path =>
+const getPastChecksum = (path) =>
   existsSync(path)
     ? hashFromFileContent(readFileSync(path, defaults.encoding))
     : null

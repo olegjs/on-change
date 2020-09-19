@@ -7,7 +7,7 @@ const package = require('../package.json')
 const { magenta, yellow } = require('chalk')
 const { encoding } = require('./defaults')
 
-const run = cmd => execSync(cmd, { encoding })
+const run = (cmd) => execSync(cmd, { encoding })
 
 module.exports = () => {
   const scriptPath = path.join(__dirname, 'cli.js')
@@ -25,7 +25,7 @@ module.exports = () => {
   try {
     const helpText = run(`${command} --help`)
 
-    options.forEach(option =>
+    options.forEach((option) =>
       ok(helpText.includes(option), `Expect "${option}" in help`),
     )
 
