@@ -24,7 +24,7 @@
     "switch",
     "tool"
   ],
-  "repository": "https://github.com/olegjs/on-change",
+  "repository": "github:olegjs/on-change",
   "license": "ISC",
   "author": "Oleg",
   "files": [
