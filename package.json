@@ -27,21 +27,22 @@
   "repository": "github:olegjs/on-change",
   "license": "ISC",
   "author": "Oleg",
-  "files": [
-    "src/*.js",
-    "!src/*.test.js"
-  ],
   "main": "./src/cli.js",
   "bin": {
     "on-change": "./src/cli.js"
   },
+  "files": [
+    "src/*.js",
+    "!src/*.test.js"
+  ],
   "scripts": {
     "coverage": "nyc npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/",
     "prepublishOnly": "npm run lint && npm run coverage",
-    "test": "node test.js",
-    "start": "node src/cli.js"
+    "report": "nyc report --reporter=lcovonly",
+    "start": "node src/cli.js",
+    "test": "node test.js"
   },
   "prettier": {
     "proseWrap": "always",
@@ -50,16 +51,26 @@
     "trailingComma": "all"
   },
   "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 2017
-    },
     "env": {
       "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017
     },
     "extends": [
       "eslint:recommended",
       "prettier"
     ]
+  },
+  "nyc": {
+    "branches": 100,
+    "check-coverage": true,
+    "functions": 100,
+    "lines": 100,
+    "reporter": [
+      "text"
+    ],
+    "statements": 100
   },
   "dependencies": {
     "chalk": "^4.1.0",
@@ -70,15 +81,5 @@
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "nyc": "^15.1.0"
-  },
-  "nyc": {
-    "check-coverage": true,
-    "reporter": [
-      "text"
-    ],
-    "branches": 100,
-    "lines": 100,
-    "functions": 100,
-    "statements": 100
   }
 }
