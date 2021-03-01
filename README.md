@@ -5,8 +5,6 @@
 ![Node.js CI](https://github.com/olegjs/on-change/workflows/Node.js%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/olegjs/on-change/badge.svg?branch=master)](https://coveralls.io/github/olegjs/on-change?branch=master)
 ![GitHub last commit](https://img.shields.io/github/last-commit/olegjs/on-change)
-[![dependencies Status](https://david-dm.org/olegjs/on-change/status.svg)](https://david-dm.org/olegjs/on-change)
-[![devDependencies Status](https://david-dm.org/olegjs/on-change/dev-status.svg)](https://david-dm.org/olegjs/on-change?type=dev)
 
 CLI tool to run a command if file has changed since the last time that command
 was run.
