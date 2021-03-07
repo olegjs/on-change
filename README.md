@@ -14,10 +14,8 @@ between branches and getting `Error: Cannot find module...`? Add the following
 to `package.json` to automate this chore.
 
 ```json
-{
-  "scripts": {
-    "prestart": "npx @olegjs/on-change --file package-lock.json npm ci"
-  }
+"scripts": {
+  "prestart": "npx @olegjs/on-change --file package-lock.json npm ci"
 }
 ```
 
