@@ -41,6 +41,7 @@
     "lint": "eslint ./src/",
     "prepublishOnly": "npm run lint && npm run coverage",
     "report": "nyc report --reporter=lcovonly",
+    "report-dev": "nyc report --reporter=html",
     "start": "node src/cli.js",
     "test": "node test.js"
   },
