@@ -28,6 +28,20 @@ const argv = require('yargs')
     describe: 'Force color or disable with --no-color',
     type: 'boolean',
   })
+  .option('verbose', {
+    describe: 'Notify when no file chage detected and commad skipped',
+    type: 'boolean',
+  })
+  .option('silent', {
+    alias: 'quiet',
+    describe: 'No notification',
+    type: 'boolean',
+  })
+  .option('dry-run', {
+    alias: 'd',
+    describe: 'Skip running commmand',
+    type: 'boolean',
+  })
   .demandCommand(1).argv
 
 const getPastChecksum = (path) =>
@@ -38,14 +52,34 @@ const getPastChecksum = (path) =>
 const checksum = getChecksum(readFileSync(argv.file, defaults.encoding))
 const checksumFilePath = getChecksumFilePath(argv.file)
 const pastChecksum = getPastChecksum(checksumFilePath)
+const command = argv._.join(' ')
 
 if (checksum !== pastChecksum) {
-  console.log(
-    `File "${magenta(argv.file)}" has changed.`,
-    `Running "${yellow(argv._.join(' '))}"...`,
-  )
+  if (!argv.silent) {
+    console.log(
+      `File "${magenta(argv.file)}" has changed.`,
+      `Running "${yellow(command)}"...`,
+    )
+  }
 
-  const [command, ...args] = argv._
-  spawnSync(command, args, { encoding: defaults.encoding, stdio: 'inherit' })
-  writeFileSync(checksumFilePath, `${checksum}  ${argv.file}`)
+  if (!argv['dry-run']) {
+    const [commandName, ...args] = argv._
+
+    spawnSync(commandName, args, {
+      encoding: defaults.encoding,
+      stdio: 'inherit',
+    })
+
+    writeFileSync(checksumFilePath, `${checksum}  ${argv.file}`)
+  } else {
+    console.log(
+      `Would run ${yellow(command)}.`,
+      `Would store ${argv.file} checksum in ${checksumFilePath}`,
+    )
+  }
+} else if (argv.verbose) {
+  console.log(
+    `File "${magenta(argv.file)}" did not change.`,
+    `Skip "${yellow(command)}".`,
+  )
 }
