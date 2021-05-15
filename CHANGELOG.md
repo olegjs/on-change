@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0
+
+- Drop node@10 support
+
 ## 2.0.0
 
 - Add node@14 support
