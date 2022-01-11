@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+- Update dependencies
+
 ## 3.0.0
 
 - Drop node@10 support
